@@ -1,2 +1,2 @@
-# pretty-validator
-A javascript form validation library you won't hate
+# JS-Validator
+Javascript input validation inspired by Laravel
