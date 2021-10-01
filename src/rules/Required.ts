@@ -1,10 +1,11 @@
-import { RuleContract } from "../contracts/RuleContract";
+import { IRuleContract } from "../Contracts/RuleContract";
+import isEmpty from "../helpers/isEmpty";
 import isNotEmpty from "../helpers/isNotEmpty";
 import isNotNull from "../helpers/isNotNull";
 
-export class Required implements RuleContract {
-  validate(value: any, param?: any): boolean {
-    return isNotNull(value) && isNotEmpty(value);
+export class Required implements IRuleContract {
+  validate(value: string | number | undefined | unknown, param?: any): boolean {
+    return !isEmpty(value) && isNotNull(value) && isNotEmpty(value);
   }
 
   errorMessage(): string {

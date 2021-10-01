@@ -1,17 +1,24 @@
 import { Min } from "../../src/rules/Min";
 
 describe("Min Rule", () => {
-  test("returns false on invalid value", () => {
-    const required = new Min();
+  test('it can validate length of strings', () => {
 
-    expect(required.validate("abc", "7")).toBeFalsy();
-    expect(required.validate(5, "7")).toBeFalsy();
-  });
+    const minmum = new Min();
 
-  test("returns true on valid value", () => {
-    const required = new Min();
+    expect(minmum.validate("abcde", 4)).toBeTruthy();
+    expect(minmum.validate("abc", 4)).toBeFalsy();
+    expect(minmum.validate("6", 4)).toBeTruthy();
+    expect(minmum.validate("3", 4)).toBeFalsy();
 
-    expect(required.validate("abcdefgh", "7")).toBeTruthy();
-    expect(required.validate(20, "7")).toBeTruthy();
-  });
+  })
+
+  test('it can validate min value of numbers', () => {
+
+    const minmum = new Min();
+
+    expect(minmum.validate(6, 4)).toBeTruthy();
+    expect(minmum.validate(2, 4)).toBeFalsy();
+    expect(minmum.validate(BigInt(10), 4)).toBeTruthy();
+
+  })
 });

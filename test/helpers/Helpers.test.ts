@@ -48,7 +48,7 @@ describe('Helpers', () => {
     })
 
     test("value is not null", () => {
-        expect(isFunction(() => {})).toBeTruthy();
+        expect(isFunction(() => { })).toBeTruthy();
         expect(isFunction('string')).toBeFalsy();
     })
 
@@ -77,6 +77,7 @@ describe('Helpers', () => {
     test("value is numeric", () => {
         expect(isNumeric(BigInt(10))).toBeTruthy();
         expect(isNumeric(12)).toBeTruthy();
+        expect(isNumeric("2")).toBeTruthy();
     })
 
     test("value is empty", () => {
@@ -90,7 +91,7 @@ describe('Helpers', () => {
 
     test("value is not empty", () => {
         expect(isNotEmpty('test')).toBeTruthy();
-        expect(isNotEmpty({key: 'item'})).toBeTruthy();
+        expect(isNotEmpty({ key: 'item' })).toBeTruthy();
         expect(isNotEmpty([{}])).toBeTruthy();
         expect(isNotEmpty(true)).toBeTruthy();
         expect(isNotEmpty('')).toBeFalsy();

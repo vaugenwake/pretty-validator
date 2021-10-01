@@ -1,18 +1,24 @@
-import { RuleContract } from "../contracts/RuleContract";
+import { IRuleContract } from "../Contracts/RuleContract";
+import isNumeric from "../helpers/isNumeric";
 
-export class Min implements RuleContract {
+export class Min implements IRuleContract {
   validate(value: any, param?: any): boolean {
-    /**
-     * String = validate number of character
-     * Number = validate value of nunber
-     */
-    if (typeof value == "string" || value instanceof String) {
-      return String(value).length > Number(param);
-    } else if (typeof value == "number" || value instanceof Number) {
-      return Number(value) > Number(param);
+
+    if (isNumeric(value)) {
+      // Is a string of a number like "2" or "1234"
+      if (Number(value) < Number(param)) {
+        return false;
+      } else {
+        return true;
+      }
     }
 
-    return false;
+
+    if (String(value).length < Number(param)) {
+      return false;
+    }
+
+    return true;
   }
 
   errorMessage(): string {

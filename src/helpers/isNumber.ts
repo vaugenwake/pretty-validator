@@ -1,3 +1,3 @@
-export default function(value:any) {
+export default function (value: any) {
     return typeof value === 'number';
 }
