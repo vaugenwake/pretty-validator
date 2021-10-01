@@ -1,8 +1,20 @@
 import { Validator } from "../src/Validator";
 
 describe("Validator", () => {
-  test("Sample Test", () => {
-    const hello = new Validator();
-    expect(hello.helloWorld()).toBe("Hello World");
-  });
+
+  test('can set initial form data', () => {
+    const data = {
+      name: "test",
+      email: "test@example.com"
+    };
+
+    const validator = new Validator({
+      name: ['required']
+    });
+
+    validator.setData(data);
+
+    expect(validator.all()).toBe(data);
+  })
+
 });
